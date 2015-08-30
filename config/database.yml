@@ -1,0 +1,12 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: order-book_development
+
+test:
+  <<: *default
+  database: order-book_test

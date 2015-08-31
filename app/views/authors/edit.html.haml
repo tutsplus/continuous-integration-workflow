@@ -1,0 +1,19 @@
+%h1
+  = "Edit \"#{@author.first_name} #{@author.last_name}\""
+  .pull-right= link_to 'Delete Author', @author, method: :delete, class: 'btn btn-danger'
+
+= form_for @author, html: { class: 'form-horizontal' } do |f|
+  .form-group
+    = f.label :first_name, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.text_field :first_name, class: 'form-control'
+
+  .form-group
+    = f.label :last_name, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.text_field :last_name, class: 'form-control'
+
+  .form-group
+    .col-sm-10.col-sm-push-2
+      = f.submit 'Update Author', class: 'btn btn-lg btn-success'
+      = link_to 'Cancel', authors_path, class: 'btn'

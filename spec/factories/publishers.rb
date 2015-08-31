@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :publisher do
-    name "Book Publisher"
+    name "O'Reilly Media"
   end
 
 end

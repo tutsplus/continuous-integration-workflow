@@ -1,4 +1,6 @@
-%h1 Authors
+%h1
+  .pull-right= link_to 'Create Author', new_author_path, class: 'btn btn-success'
+  Authors
 
 - if @authors.count > 0
   .item-list.row

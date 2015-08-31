@@ -95,7 +95,7 @@ RSpec.describe PublishersController, type: :controller do
       it 'doesn\'t update the publisher' do
         put :update, id: publisher.id, publisher: { name: nil }
         publisher.reload
-        expect(publisher.name).to eq('Book Publisher')
+        expect(publisher.name).to eq('O\'Reilly Media')
       end
 
       it 'rerenders the edit page' do

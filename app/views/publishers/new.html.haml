@@ -1,0 +1,12 @@
+%h1 Create New Publisher
+
+= form_for @publisher, html: { class: 'form-horizontal' } do |f|
+  .form-group
+    = f.label :name, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.text_field :name, class: 'form-control'
+
+  .form-group
+    .col-sm-10.col-sm-push-2
+      = f.submit 'Create Publisher', class: 'btn btn-lg btn-success'
+      = link_to 'Cancel', publishers_path, class: 'btn'

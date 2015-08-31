@@ -16,6 +16,7 @@ deploy:
   environment:
     develop: staging
     master: production
-  migrate: !ruby/string:HighLine::String rake db:migrate
+  migrate: "rake db:migrate"
   on:
     repo: mmuehlberger/tutsplus-continuous-integration
+    rvm: '2.2'

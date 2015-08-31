@@ -1,0 +1,11 @@
+%h1 Authors
+
+- if @authors.count > 0
+  .item-list.row
+    - @authors.in_groups(4, false) do |authors|
+      .col-sm-3.list-column
+        %ul
+          - authors.each do |author|
+            %li.list-item= link_to "#{author.last_name}, #{author.first_name}", edit_author_path(author)
+- else
+  %em There are no authors yet.

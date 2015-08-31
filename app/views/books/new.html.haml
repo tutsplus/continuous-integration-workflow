@@ -1,0 +1,61 @@
+%h1 New Book
+
+= form_for @book, html: { class: 'form-horizontal' } do |f|
+  - if @book.errors.any?
+    .alert.alert-danger
+      %button.close{ data: { dismiss: 'alert' } } ×
+      %ul
+        - @book.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :isbn, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.text_field :isbn, class: 'form-control'
+
+  .form-group
+    = f.label :title, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.text_field :title, class: 'form-control'
+
+  .form-group
+    = f.label :subtitle, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.text_field :subtitle, class: 'form-control'
+
+  .form-group
+    = f.label :publisher_id, 'Publisher', class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.collection_select :publisher_id, Publisher.order(:name), :id, :name, {}, class: 'form-control select2-input'
+
+  .form-group
+    = f.label :release_date, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.date_field :release_date, class: 'form-control'
+
+  .form-group
+    = f.label :price, class: 'control-label col-sm-2'
+    .col-sm-10
+      .input-group
+        %span.input-group-addon $
+        = f.number_field :price, class: 'form-control money-control', step: :any
+
+  .form-group
+    = f.label :edition, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.number_field :edition, class: 'form-control', min: 1
+
+  .form-group
+    = f.label :pages, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.number_field :pages, class: 'form-control', min: 1
+
+  .form-group
+    = f.label :abstract, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.text_area :abstract, class: 'form-control', rows: 5
+
+  .form-group
+    .col-sm-10.col-sm-push-2
+      = f.submit 'Create Book', class: 'btn btn-lg btn-success'
+      = link_to 'Return to list', books_path, class: 'btn'

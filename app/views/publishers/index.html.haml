@@ -1,0 +1,11 @@
+%h1 Publishers
+
+- if @publishers.count > 0
+  .item-list.row
+    - @publishers.in_groups(4, false) do |publishers|
+      .col-sm-3.list-column
+        %ul
+          - publishers.each do |publisher|
+            %li.list-item= link_to publisher.name, edit_publisher_path(publisher)
+- else
+  %em There are no publishers yet.

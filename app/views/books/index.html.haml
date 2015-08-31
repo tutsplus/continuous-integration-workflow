@@ -1,0 +1,31 @@
+%h1
+  Books
+  .pull-right= link_to 'Create Book', new_book_path, class: 'btn btn-success'
+
+%p Use this area to manage the books you have in stock. This can also be extended to import books autmatially from a source.
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th ISBN
+      %th Title
+      %th Publisher
+      %th Price
+      %th
+  %tbody
+    - if @books.count > 0
+      - @books.each do |book|
+        %tr
+          %td= book.isbn
+          %td= book.title
+          %td= book.publisher.name if book.publisher
+          %td= number_to_currency book.price
+          %td.text-right
+            = link_to 'Edit', edit_book_path(book), class: 'btn btn-xs btn-warning'
+            = link_to 'Delete', book_path(book), method: :delete, class: 'btn btn-xs btn-danger'
+    - else
+      %tr
+        %td(colspan=5)
+          %em
+            You have no books in your inventory right now.
+            = link_to 'Add one.', new_book_path

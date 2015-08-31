@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title OrderBook
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          %button.navbar-toggle.collapsed{ type: 'button', data: { toggle: false, target: '#navbar-toggle-container' }, aria: { expanded: false } }
+            %span.sr-only Toggle Navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to 'OrderBook', root_path, class: 'navbar-brand'
+
+        #navbar-toggle-container.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li= link_to 'Books', books_path
+            %li= link_to 'Authors', authors_path
+            %li= link_to 'Publishers', publishers_path
+
+    .container
+      - flash.each do |type, message|
+        %div{ class: "alert fade in #{bootstrap_class_for(type)}" }
+          %button.close{ data: { dismiss: 'alert' } } ×
+          = message
+
+      = yield

@@ -11,9 +11,11 @@ gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 
 gem 'haml-rails'
 gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 group :development, :test do
   gem 'byebug'

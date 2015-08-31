@@ -1,11 +1,22 @@
 language: ruby
 rvm:
-  - '2.1'
-  - '2.2'
-
+- '2.1'
+- '2.2'
 addons:
   postgresql: '9.4'
-
 before_script:
-  - psql -c 'create database tutsplus_ci_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
+- psql -c 'create database tutsplus_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+
+deploy:
+  provider: engineyard
+  api_key:
+    secure: FiX+KRsqNWNgfvvSINzil6HS/a5h8wxz3Og/NBpOeHhuOM2V3asSVVGXhBlyxA8BOWhVC+M6tb1H0f3W18Qtc7e8eVtTNp2jeuepHPNwNRt2FCbiQpssWfacBZiEFgCY9gA7rzMGSpGFljmXQiJJwvqEjEvcqE15IIJoaghXr5z1xY8TMT/vtPahAj3dhmDRYhFefpFgQb/Dip3PYFGVa8DTfxi1Tz7YVv9XOChw7KNTE/VGiOh4lpYcCb6GVkV5PjARHcdU9kKBvnkxUQXL9XafJpMJ9VFn/P/VlcFg0RDCdp27kfZmlyE8o22jZjQeaotYHVldDPnRgjGMTAuBeNIoAaTK2w6qd13VcK5RMbtfYg0nu4//AEfj4Ef734g5dphIDWoBrXsxNYqAXgjOeE2IyRX0RJf2VYx/0n8M+pJd0TjlfDuMblAqiPQiUJ1vgTR7iCHaYxcsFbI8q/X9OdxyWQTDis21dgsr9puG/augBlup9lYtDu4RCf49SLTf8F4A6T5ll4YodjRk5g18I1fAIcoM6v7N6zzk/kFxYjQUbZ1wTPRSa85CIOmItoxNvcNOY3mzyMt2DBoKkXBSuG/Yup8hBYZrgwwKPDoJMwK+spLX3svJd3W5qfc700I/++49oaM/MThewr9B+LPiw1Lip5PgJ67zRy3cAy5ZZYU=
+  app: tp_continuous_integration
+  environment:
+    develop: staging
+    master: production
+  migrate: "rake db:migrate"
+  on:
+    repo: mmuehlberger/tutsplus-continuous-integration
+    rvm: '2.2'

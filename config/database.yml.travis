@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: tutsplus_ci_test
+  username: postgres

@@ -1,4 +1,6 @@
-%h1 Publishers
+%h1
+  .pull-right= link_to 'Create Publisher', new_publisher_path, class: 'btn btn-success'
+  Publishers
 
 - if @publishers.count > 0
   .item-list.row

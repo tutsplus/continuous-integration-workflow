@@ -28,4 +28,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'spring-commands-rspec'
+
+  gem 'simplecov'
+  gem 'simplecov-rcov'
+  gem 'rspec_junit_formatter'
 end

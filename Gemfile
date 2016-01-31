@@ -33,3 +33,7 @@ group :development, :test do
   gem 'simplecov-rcov'
   gem 'rspec_junit_formatter'
 end
+
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
+gem 'capistrano-rvm'
